@@ -15,6 +15,7 @@ interface LikedContentProps {
 const LikedContent: React.FC<LikedContentProps> = ({
     songs
 }) => {
+    const onPlay = useOnPlay(songs);
     const router = useRouter();
 
     const {isLoading, user} = useUser();
@@ -32,8 +33,6 @@ const LikedContent: React.FC<LikedContentProps> = ({
             </div>
         )
     }
-    
-    const onPlay = useOnPlay(songs);
 
     return (
         <div className="flex flex-col gap-y-2 w-full p-6">
