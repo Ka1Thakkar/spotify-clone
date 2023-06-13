@@ -2,11 +2,13 @@ import getSongs from "@/actions/getSongs";
 import Header from "@/components/header";
 import ListItem from "@/components/listitem";
 import PageContent from "./components/PageContent";
+import getLikedSongs from "@/actions/getLikedSongs";
 
 export const revalidate = 0;
 
 export default async function Home() {
   const songs = await getSongs();
+  const songsLiked = await getLikedSongs();
   return (
     <div className='bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto'>
       <Header>
@@ -19,6 +21,7 @@ export default async function Home() {
               name="Liked Songs"
               image="/images/liked.png"
               href="liked"
+              songsLiked={songsLiked}
             />
           </div>
         </div>
